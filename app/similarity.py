@@ -1,5 +1,5 @@
 from resume_processor import process_resume
-from paper_retrieval import get_research_papers
+from paper_retrival import get_research_papers
 from sentence_transformers import SentenceTransformer, util
 
 # Load Sentence-BERT model
@@ -39,8 +39,7 @@ if __name__ == "__main__":
 
     # Get research papers
     author_name = input("Enter researcher's name: ")
-    papers, _ = get_research_papers(author_name)
-
+    papers = get_research_papers(author_name)
 
     if not papers:
         print("No papers found. Exiting...")

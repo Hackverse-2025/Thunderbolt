@@ -21,9 +21,7 @@ def get_research_papers(author_name):
     author_id = author['authorId']
     researcher_name = author.get('name', 'Unknown')
 
-    # Handle missing affiliations
-    affiliations = author.get('affiliations', [])
-    institution = affiliations[0].get('name', 'Unknown Institution') if affiliations else 'Unknown Institution'
+   
     
     # Step 2: Get papers using author ID (including paperId for the link)
     url = f"https://api.semanticscholar.org/graph/v1/author/{author_id}/papers?fields=title,abstract,paperId"
@@ -56,10 +54,3 @@ def get_research_papers(author_name):
         details["papers"].append({"title": title, "abstract": abstract, "link": link})
     
     return results, details
-
-if __name__ == "__main__":
-    author_name = input("Enter researcher's name: ")
-    results, details = get_research_papers(author_name)
-    print(results)
-    print()
-    print(details)
