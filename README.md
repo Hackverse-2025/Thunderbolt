@@ -160,38 +160,18 @@ We would like to extend our heartfelt gratitude to everyone who contributed to t
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/your-github.png" width="80" height="80" alt="Your Name">
+      <img src="https://avatars.githubusercontent.com/u/125748305?v=4" width="80" height="80" alt="Your Name">
       <br>
-      <a href="https://github.com/your-github"><b>Your Name</b></a>
+      <a href="https://github.com/Srujanrana07"><b>Srujan Rana</b></a>
       <br>
       🏆 Project Lead, Backend Developer
     </td>
     <td align="center">
-      <img src="https://github.com/contributor1.png" width="80" height="80" alt="Contributor 1">
+      <img src="https://avatars.githubusercontent.com/u/119315259?v=4" width="80" height="80" alt="Contributor 1">
       <br>
       <a href="https://github.com/contributor1"><b>Contributor 1</b></a>
       <br>
-      💻 Frontend Developer
-    </td>
-    <td align="center">
-      <img src="https://github.com/contributor2.png" width="80" height="80" alt="Contributor 2">
-      <br>
-      <a href="https://github.com/contributor2"><b>Contributor 2</b></a>
-      <br>
-      🧠 NLP & Model Training
-    </td>
-    <td align="center">
-      <img src="https://github.com/contributor3.png" width="80" height="80" alt="Contributor 3">
-      <br>
-      <a href="https://github.com/contributor3"><b>Contributor 3</b></a>
-      <br>
-      🎨 UI/UX Designer
-    </td>
-    <td align="center">
-      <img src="https://github.com/contributor4.png" width="80" height="80" alt="Contributor 4">
-      <br>
-      <a href="https://github.com/contributor4"><b>Contributor 4</b></a>
-      <br>
+      💻 Frontend Developer  
       🌐 API Integration
     </td>
   </tr>
