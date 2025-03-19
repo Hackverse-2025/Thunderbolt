@@ -169,10 +169,9 @@ We would like to extend our heartfelt gratitude to everyone who contributed to t
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/119315259?v=4" width="80" height="80" alt="Contributor 1">
       <br>
-      <a href="https://github.com/contributor1"><b>Contributor 1</b></a>
+      <a href="https://github.com/contributor1"><b>Rudra Prasad Jena</b></a>
       <br>
-      💻 Frontend Developer  
-      🌐 API Integration
+      💻 Frontend Developer & 🌐 API Integration
     </td>
   </tr>
 </table>
