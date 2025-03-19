@@ -173,6 +173,13 @@ We would like to extend our heartfelt gratitude to everyone who contributed to t
       <br>
       💻 Frontend Developer & 🌐 API Integration
     </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/161008301?v=4" width="80" height="80" alt="Contributor 1">
+      <br>
+      <a href="https://github.com/Abhishek-ro"><b>Abhishek Kumar</b></a>
+      <br>
+      💻 Frontend Developer
+    </td>
   </tr>
 </table>
 
