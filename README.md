@@ -1,4 +1,4 @@
-# 📄 **ResearchReach: A Researc Email writer**  
+# 📄 **ResearchReach: A Cold-Email Helper**  
 
 This project is a web-based tool that matches research papers to a candidate’s resume by utilizing Sentence-BERT (SBERT) and cosine similarity. The tool analyzes the candidate's skills, experience, and projects, then identifies the most relevant research papers based on the alignment between the resume and research paper content. By leveraging advanced natural language processing techniques, it enhances the process of finding research papers that best match a candidate’s qualifications, making the search more efficient and accurate.
 ---  
@@ -79,7 +79,7 @@ The system extracts skills and projects from the resume using `pdfplumber`, `spa
 ---
 
 ## 📜 **2️⃣ Research Paper Retrieval**
-The system retrieves research papers using the **Semantic Scholar API**.
+The system retrieves research papers using Web Scraping with the help of beautifulsoup4 & Spacy 
 
 **Example papers:**  
 
@@ -117,6 +117,7 @@ Cosine similarity measures how similar two vectors are:
 \[
 \text{Cosine Similarity} = \frac{A \cdot B}{||A|| \cdot ||B||}
 \]
+
 
 ---
 
