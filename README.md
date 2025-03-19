@@ -1,7 +1,6 @@
-# 📄 **Research Paper Matching Tool**  
+# 📄 **ResearchReach: A Researc Email writer**  
 
-This project is a web-based tool designed to match research papers to a candidate's resume using **Sentence-BERT (SBERT)** and cosine similarity. The tool helps identify the most relevant research paper based on the candidate’s skills and projects.  
-
+This project is a web-based tool that matches research papers to a candidate’s resume by utilizing Sentence-BERT (SBERT) and cosine similarity. The tool analyzes the candidate's skills, experience, and projects, then identifies the most relevant research papers based on the alignment between the resume and research paper content. By leveraging advanced natural language processing techniques, it enhances the process of finding research papers that best match a candidate’s qualifications, making the search more efficient and accurate.
 ---  
 
 ## 🚀 **Introduction**  
@@ -153,3 +152,51 @@ Once a matching paper is found, the system generates an internship request email
 ✅ Formal & Professional  
 ✅ Technical & Research-Oriented  
 ✅ Enthusiastic & Passionate  
+
+---
+## 🤝 **Contributors**  
+We would like to extend our heartfelt gratitude to everyone who contributed to this project. Your hard work and dedication made this possible!  
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/your-github.png" width="80" height="80" alt="Your Name">
+      <br>
+      <a href="https://github.com/your-github"><b>Your Name</b></a>
+      <br>
+      🏆 Project Lead, Backend Developer
+    </td>
+    <td align="center">
+      <img src="https://github.com/contributor1.png" width="80" height="80" alt="Contributor 1">
+      <br>
+      <a href="https://github.com/contributor1"><b>Contributor 1</b></a>
+      <br>
+      💻 Frontend Developer
+    </td>
+    <td align="center">
+      <img src="https://github.com/contributor2.png" width="80" height="80" alt="Contributor 2">
+      <br>
+      <a href="https://github.com/contributor2"><b>Contributor 2</b></a>
+      <br>
+      🧠 NLP & Model Training
+    </td>
+    <td align="center">
+      <img src="https://github.com/contributor3.png" width="80" height="80" alt="Contributor 3">
+      <br>
+      <a href="https://github.com/contributor3"><b>Contributor 3</b></a>
+      <br>
+      🎨 UI/UX Designer
+    </td>
+    <td align="center">
+      <img src="https://github.com/contributor4.png" width="80" height="80" alt="Contributor 4">
+      <br>
+      <a href="https://github.com/contributor4"><b>Contributor 4</b></a>
+      <br>
+      🌐 API Integration
+    </td>
+  </tr>
+</table>
+
+🌟 **Want to contribute?**  
+We welcome contributions from the community! If you'd like to improve the project or report issues, feel free to fork the repo and submit a pull request.  
+
