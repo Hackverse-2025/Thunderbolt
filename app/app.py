@@ -2,9 +2,10 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import os
 import uuid
-from paper_retrieval import get_research_papers
+from paper_retrival import get_research_papers
 from resume_processor import process_resume
 from similarity import compute_highest_similarity
+from email_generator import formal_professional_email, enthusiastic_email, technical_email
 
 app = Flask(__name__)
 CORS(app)
@@ -32,9 +33,14 @@ def upload_resume():
         "success": True,
         "fileName": file.filename,
         "resumeId": filename,
-        "filePath": file_path,
         "extractedData": extracted_data
     })
+
+@app.route('/api/status/', methods=['GET'])
+def api_status():
+    """Check API health status."""
+    return jsonify({"status": "API is running"}), 200
+
 
 @app.route('/api/search-researcher/', methods=['POST'])
 def search_researcher():
@@ -45,16 +51,12 @@ def search_researcher():
     if not researcher_name:
         return jsonify({"error": "Researcher name is required"}), 400
 
-    print(f"Searching for researcher: {researcher_name}")  # Debug
+    print(f"Searching for researcher: {researcher_name}")
 
     papers, researcher_details = get_research_papers(researcher_name)
-    
-    print(f"Fetched researcher: {researcher_details['researcher']}")  # Debug
-    print(f"Fetched papers: {papers}")  # Debug
 
-    matched_papers = []
-    if papers:
-        matched_papers = [{"title": paper["title"], "abstract": paper["abstract"]} for paper in papers]
+    print(f"Fetched researcher: {researcher_details['researcher']}")
+    print(f"Fetched papers: {papers}")
 
     if not papers:
         return jsonify({"error": "No research papers found"}), 404
@@ -64,66 +66,38 @@ def search_researcher():
         "papers": papers
     })
 
-@app.route('/api/match-resume/', methods=['POST'])
-def match_resume():
-    """Matches a resume against research papers using NLP similarity scoring."""
-    data = request.json
-    resume_id = data.get('resumeId')
-    researcher_name = data.get('researcher')
-
-    if not resume_id or not researcher_name:
-        return jsonify({"error": "Resume ID and Researcher name are required"}), 400
-
-    file_path = os.path.join(UPLOAD_FOLDER, resume_id)
-
-    if not os.path.exists(file_path):
-        return jsonify({"error": "Resume file not found"}), 404
-
-    extracted_data = process_resume(file_path)
-    papers, _ = get_research_papers(researcher_name)
-
-    if not papers:
-        return jsonify({"error": "No research papers found"}), 404
-
-    highest_similarity = compute_highest_similarity(extracted_data, papers)
-    print(f"💡 Highest Similarity Result: {highest_similarity}")  # Debug
-
-    if not highest_similarity:
-        return jsonify({"error": "No significant match found"}), 404
-
-    title, abstract, score = highest_similarity
-
-    return jsonify({
-        "filePath": file_path,
-        "matchedPaper": {
-            "title": title,
-            "abstract": abstract,
-            "similarityScore": round(score, 4)
-        }
-    })
-
 @app.route('/api/get-email-templates/', methods=['POST'])
 def get_email_templates():
-    """Returns email templates based on matched research paper."""
+    """Generates email templates using Gemini AI based on research paper data."""
     data = request.json
-    researcher = data.get('researcher', 'Unknown Researcher')
+    researcher = data.get('researcher', 'Unknown Researcher')  # ✅ Ensure researcher name is included
+    title = data.get('title', 'No Title')
+    abstract = data.get('abstract', 'No Abstract')
+    skills = data.get('skills', 'Not Provided')
+    projects = data.get('projects', 'Not Provided')
+
+    # Call Gemini AI email generation functions
+    professional_email = formal_professional_email(title, abstract, researcher)
+    enthusiastic_email_content = enthusiastic_email(title, abstract, researcher)
+    technical_email_content = technical_email(title, abstract, researcher)
 
     email_templates = [
         {
             "type": "Formal & Professional",
-            "content": f"Dear {researcher},\n\nI hope this email finds you well. I recently came across your research and was greatly impressed. I have a background in related fields and would love to discuss potential collaboration or internship opportunities.\n\nBest Regards,\n[Your Name]"
+            "content": professional_email
         },
         {
             "type": "Enthusiastic & Passionate",
-            "content": f"Hello {researcher},\n\nI’m incredibly excited about your work! I’ve been following your research and would be thrilled to contribute and learn from you. My background aligns with your recent projects, and I’d love to explore ways I can assist or intern with you!\n\nLooking forward to hearing from you!\n\nBest,\n[Your Name]"
+            "content": enthusiastic_email_content
         },
         {
             "type": "Technical & Research-Oriented",
-            "content": f"Dear Prof. {researcher},\n\nYour paper intrigued me due to my own research experience. I believe my prior expertise would be beneficial in extending your findings. I’d love to discuss this further and explore potential collaboration or internship opportunities.\n\nRegards,\n[Your Name]"
+            "content": technical_email_content
         }
     ]
 
     return jsonify(email_templates)
+
 
 @app.route('/api/send-email/', methods=['POST'])
 def send_email():
@@ -142,3 +116,8 @@ def send_email():
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True)
+    
+    
+    
+    
+    

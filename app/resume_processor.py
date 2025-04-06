@@ -23,17 +23,17 @@ def extract_skills_with_keybert(text):
 
 def extract_projects(text):
     """Extracts projects from resume using regex."""
-    PROJECT_PATTERN = r"(Project:|Worked on|Developed)(.*?)(\n|$)"
+    PROJECT_PATTERN = r"(Project:|Worked on|Developed)(.+?)(\n|$)"
     projects = re.findall(PROJECT_PATTERN, text)
     return [project[1].strip() for project in projects]
 
-def process_resume(file):
+def process_resume(resume_file_path):
     """Processes resume to extract skills and projects."""
     text = ""
-    # Open file-like object directly with pdfplumber
-    with pdfplumber.open(file) as pdf:
-        for page in pdf.pages:
-            text += page.extract_text() or ""
+    if resume_file_path.endswith('.pdf'):
+        with pdfplumber.open(resume_file_path) as pdf:
+            for page in pdf.pages:
+                text += page.extract_text() or ""
     
     text = text.replace("\n", " ").strip()
 
@@ -47,7 +47,6 @@ def process_resume(file):
         "skills": skills,
         "projects": projects
     }
-
 
 if __name__ == "__main__":
     resume_file = input("Enter resume file path: ")
